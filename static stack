@@ -1,0 +1,118 @@
+#include<stdio.h>
+#define CAPACITY 5
+int stack[CAPACITY],top=-1;
+void push(int);
+int full(void);
+int pop(void);
+int empty(void);
+void peek(void);
+void traverse(void);
+void main()
+{
+   int ch,ele;    
+   while(1)
+   {
+   printf("enter the task:-\n");    
+   printf("1.push\n2.pop\n3.peek\n4.traverse\n5.exit\n");
+   scanf("%d",&ch);
+      switch(ch)
+      {
+       case 1: printf("enter an element:");
+               scanf("%d",&ele);
+               push(ele);
+               break;
+       case 2: ele=pop();
+               if(ele==0)
+               {
+                   printf("stack underflow\n");
+               }
+               else
+               {
+                   printf("popped element:%d\n",ele);
+               }
+               break;
+       case 3: peek();
+               break;
+       case 4: traverse();
+               break;
+       case 5: exit(0);
+               break;   
+       default: printf("invalid \n\n");
+      }
+   }
+}
+void push(int ele)
+{
+    if(full())
+    {
+        printf("STACK OVERFLOW");
+    }
+    else
+    {
+        top++;
+        stack[top]=ele;
+        printf("element inserted");
+    }
+}
+
+int full()
+{
+    if(top==CAPACITY-1)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+int pop()
+{
+    if(empty())
+    {
+        return 0;   
+    }
+    else
+    {
+        return stack[top--];
+    }
+}
+int empty()
+{
+    if(top==-1)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+void peek()
+{
+    if(empty())
+    {
+        printf("empty stack\n");   
+    }
+    else
+    {
+        printf("peeked element:%d\n",stack[top]);
+    }
+}
+void traverse()
+{
+    int i;
+     if(empty())
+    {
+        printf("empty stack\n");   
+    }
+    else
+    
+    printf("stack:\n");
+    for(i=0;i<=top;i++)
+    {
+        printf("%d \n",stack[i]);
+    }
+    
+}
